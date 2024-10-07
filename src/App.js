@@ -14,6 +14,7 @@ export default function App() {
   const [pageSize, setPageSize] = useState(10); // default page size is 10
   const [paginationType, setPaginationType] = useState("Controlled"); // Controlled pagination by default
   const [highlightedRow, setHighlightedRow] = useState(null);
+  const [hoveredRowIndex, setHoveredRowIndex] = useState(null);
   const rowRef = useRef([]);
 
   const [bookmarkedItems, setBookmarkedItems] = useState(
@@ -55,6 +56,14 @@ export default function App() {
     }, 2000);
   }
 
+  const handleMouseEnter = (id) => {
+    setHoveredRowIndex(id);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredRowIndex(null);
+  };
+
   const currentTableData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * pageSize;
     const lastPageIndex = firstPageIndex + pageSize;
@@ -88,15 +97,18 @@ export default function App() {
                 <tr key={userId} ref={el => (rowRef.current[userId] = el)} style={{
                   backgroundColor:
                     (Number(highlightedRow) === userId) ? "yellow" : (userId % 2 === 0) ? '#b0e6e0' : '#ffffff'
-                }}>
+                }} onMouseEnter={(e) => handleMouseEnter(userId)}
+                onMouseLeave={() => handleMouseLeave}>
                   <td>{userId}</td>
                   <td>{user.first_name + " " + user.last_name}</td>
                   <td>{user.email}</td>
                   <td>{user.phone}</td>
                   <td>
-                    <IconButton aria-label="Add bookmark" onClick={() => handleBookmarkClick(userId)}>
-                      {bookmarkedItems[userId].bookmarked ? <BookmarkRemove /> : <BookmarkAddIcon /> }
-                    </IconButton>
+                    {hoveredRowIndex === userId && (
+                      <IconButton aria-label="Add bookmark" onClick={() => handleBookmarkClick(userId)}>
+                        {bookmarkedItems[userId].bookmarked ? <BookmarkRemove /> : <BookmarkAddIcon /> }
+                      </IconButton>
+                    )}
                   </td>
                 </tr>
               );
