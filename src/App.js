@@ -47,9 +47,11 @@ export default function App() {
     setCurrentPage(pNo);
     setHighlightedRow(id);
 
+    setTimeout(() => {
     if (rowRef.current[id]) {
       rowRef.current[id].scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
+  });
     
     setTimeout(() => {
       setHighlightedRow(null);
@@ -94,11 +96,11 @@ export default function App() {
             {currentTableData.map(user => {
               const userId = user.id;
               return (
-                <tr key={userId} ref={el => (rowRef.current[userId] = el)} style={{
-                  backgroundColor:
-                    (Number(highlightedRow) === userId) ? "yellow" : (userId % 2 === 0) ? '#b0e6e0' : '#ffffff'
-                }} onMouseEnter={(e) => handleMouseEnter(userId)}
-                onMouseLeave={() => handleMouseLeave}>
+                <tr key={userId} ref={el => (rowRef.current[userId] = el)}
+                style={{backgroundColor:(Number(highlightedRow) === userId) ? "yellow" : (userId % 2 === 0) ? '#b0e6e0' : '#ffffff'}}
+                onMouseEnter={(e) => handleMouseEnter(userId)}
+                onMouseLeave={() => handleMouseLeave}
+                >
                   <td>{userId}</td>
                   <td>{user.first_name + " " + user.last_name}</td>
                   <td>{user.email}</td>
