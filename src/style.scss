@@ -1,0 +1,63 @@
+h1,
+p {
+  font-family: Lato;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  position: relative;
+}
+
+thead tr th {
+  font-weight: 500;
+  text-align: left;
+  background-color: #03766b;
+  color: white;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #b0e6e0;
+}
+
+th,
+td {
+  padding: 8px;
+  overflow-wrap: break-word;
+}
+
+.paginationbarControlled {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.paginationbarProgressive {
+  display: flex;
+  justify-content: right;
+  margin: 10px;
+}
+
+.masterContainer:after {
+  display: table;
+  clear: both;
+}
+
+.masterContainer-summary {
+  float: left;
+  height: 76px;
+  margin-left: 10px;
+  align-items: center;
+  display:flex;
+}
+
+.masterContainer-pagination {
+  float: right;
+}
+
+.infoIcon {
+  color: #03766b;
+}
+
+.footnotes {
+  margin-left: 10px;
+}
