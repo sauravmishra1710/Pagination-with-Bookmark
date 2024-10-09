@@ -9,7 +9,6 @@ const ProgressivePagination = props => {
     onPageChange,
     onUpdateItemsPerPage,
     totalDataCount,
-    siblingCount = 1,
     currentPage,
     pageSize,
   } = props;
@@ -17,7 +16,6 @@ const ProgressivePagination = props => {
   const paginationRange = usePagination({
     currentPage,
     totalDataCount,
-    siblingCount,
     pageSize
   });
 
