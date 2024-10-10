@@ -99,7 +99,7 @@ export default function App() {
                 <tr key={userId} ref={el => (rowRef.current[userId] = el)}
                 style={{backgroundColor:(Number(highlightedRow) === userId) ? "yellow" : (userId % 2 === 0) ? '#b0e6e0' : '#ffffff'}}
                 onMouseEnter={() => handleMouseEnter(userId)}
-                onMouseLeave={() => handleMouseLeave}
+                onMouseLeave={() => handleMouseLeave()}
                 >
                   <td>{userId}</td>
                   <td>{user.first_name + " " + user.last_name}</td>
