@@ -75,7 +75,7 @@ export default function App() {
   return (
     <>
       <div style={{ margin: "10px", justifyContent: "center", display: "grid" }}>
-        <h1>Pagination Component</h1>
+        <h1>Pagination with Bookmarks</h1>
       </div>
       <div style={{ margin: "10px", justifyContent: "right", display: "grid" }}>
       <h5 style={{ marginBottom: "5px"}}>Select pagination type</h5>
