@@ -50,6 +50,7 @@ const ControlledPagination = props => {
         className={classnames('pagination-item', {
           disabled: currentPage === 1
         })}
+        key="firstPage"
         onClick={onFirstPage}
       >
         <div className="arrow firstpage" />
@@ -60,13 +61,14 @@ const ControlledPagination = props => {
         className={classnames('pagination-item', {
           disabled: currentPage === 1
         })}
+        key="Previous"
         onClick={onPrevious}
       >
         <div className="arrow left" />
       </li>
       {paginationRange.map(pageNumber => {
         if (pageNumber === DOTS) {
-          return <li className="pagination-item dots">&#8230;</li>;
+          return <li key={DOTS + paginationRange.indexOf(DOTS)} className="pagination-item dots">&#8230;</li>;
         }
 
         return (
@@ -74,6 +76,7 @@ const ControlledPagination = props => {
             className={classnames('pagination-item', {
               selected: pageNumber === currentPage
             })}
+            key={paginationRange.currentPage}
             onClick={() => onPageChange(pageNumber)}
           >
             {pageNumber}
@@ -84,6 +87,7 @@ const ControlledPagination = props => {
         className={classnames('pagination-item', {
           disabled: currentPage === lastPage
         })}
+        key="onNext"
         onClick={onNext}
       >
         <div className="arrow right" />
@@ -92,12 +96,13 @@ const ControlledPagination = props => {
         className={classnames('pagination-item', {
           disabled: currentPage === lastPage
         })}
+        key="lastPage"
         onClick={onLastPage}
       >
         <div className="arrow lastpage" />
         <div className="arrow lastpage" />
       </li>
-      <li>
+      <li key="itemsPerPage">
         <ItemsPerPage onChangeCallback={onUpdateItemsPerPage}></ItemsPerPage>
       </li>
     </ul>
