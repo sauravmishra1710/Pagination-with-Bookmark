@@ -51,6 +51,7 @@ const ProgressivePagination = props => {
                 className={classnames('pagination-item', {
                 disabled: currentPage === 1
                 })}
+                key="firstPage"
                 onClick={onFirstPage}
                 >
                     <span style={{marginRight: "5px", marginTop: "3px"}}>First</span>
@@ -60,6 +61,7 @@ const ProgressivePagination = props => {
                     className={classnames('pagination-item', {
                     disabled: currentPage === 1
                     })}
+                    key="onPrevious"
                     onClick={onPrevious}
                 >
                     <div className="arrow left"/>
@@ -70,6 +72,7 @@ const ProgressivePagination = props => {
                     className={classnames('pagination-item', {
                     disabled: currentPage === lastPage
                     })}
+                    key="onNext"
                     onClick={onNext}
                 >
                     <span style={{marginRight: "5px", marginTop: "3px"}}>Next</span>
@@ -80,12 +83,13 @@ const ProgressivePagination = props => {
                     className={classnames('pagination-item', {
                     disabled: currentPage === lastPage
                     })}
+                    key="lastPage"
                     onClick={onLastPage}
                 >
                     <span style={{marginRight: "5px", marginTop: "3px"}}>Last</span>
                 </li>
 
-                <li>
+                <li key="ItemsPerPage">
                     <ItemsPerPage onChangeCallback={onUpdateItemsPerPage}></ItemsPerPage>
                 </li>
             </ul>
